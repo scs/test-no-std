@@ -25,5 +25,6 @@
 #[macro_use]
 extern crate sgx_tstd as std;
 
-//pub struct Pair(ed25519_dalek::Keypair);
+// remove this and it will build
+pub struct Pair(ed25519_dalek::Keypair);
 
