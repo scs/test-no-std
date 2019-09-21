@@ -1,0 +1,29 @@
+[package]
+name = "test_no_std"
+version = "0.1.0"
+authors = ["Alain Brenzikofer <alain.brenzikofer@scs.ch>"]
+edition = "2018"
+
+
+[lib]
+name = "test_no_std"
+crate-type = ["staticlib"]
+
+[features]
+default = []
+
+[target.'cfg(not(target_env = "sgx"))'.dependencies]
+sgx_tstd      = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk", features = ["untrusted_fs","net","backtrace"] }
+
+
+[dependencies.primitives]
+git = "https://github.com/scs/substrate-api-client"
+package = "substrate-primitives"
+branch = "no_std_rstd"
+default-features = false
+
+[dependencies.ed25519-dalek]
+version = "1.0.0-pre.1"
+default-features = false
+features = ["u64_backend"]
+
