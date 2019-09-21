@@ -16,14 +16,8 @@ default = []
 sgx_tstd      = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk", features = ["untrusted_fs","net","backtrace"] }
 
 
-[dependencies.primitives]
-git = "https://github.com/scs/substrate-api-client"
-package = "substrate-primitives"
-branch = "no_std_rstd"
+[dependencies.schnorrkel]
+git = "https://github.com/w3f/schnorrkel.git"
+#branch = "schizomerlin"
+features = ["preaudit_deprecated", "u64_backend"]
 default-features = false
-
-[dependencies.ed25519-dalek]
-version = "1.0.0-pre.1"
-default-features = false
-features = ["u64_backend"]
-

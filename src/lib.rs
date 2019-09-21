@@ -26,5 +26,9 @@
 extern crate sgx_tstd as std;
 
 // remove this and it will build
-pub struct Pair(ed25519_dalek::Keypair);
+use schnorrkel::{signing_context, ExpansionMode, Keypair, SecretKey, MiniSecretKey, PublicKey,
+	derive::{Derivation, ChainCode, CHAIN_CODE_LENGTH}
+};
 
+/// A Schnorrkel/Ristretto x25519 ("sr25519") key pair.
+pub struct Pair(Keypair);
