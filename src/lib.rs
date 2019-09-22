@@ -25,6 +25,4 @@
 #[macro_use]
 extern crate sgx_tstd as std;
 
-// remove this and it will build
-pub struct Pair(ed25519_dalek::Keypair);
-
+pub type EdwardsPoint = curve25519_dalek::edwards::EdwardsPoint;
