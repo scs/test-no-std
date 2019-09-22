@@ -13,7 +13,9 @@ crate-type = ["staticlib"]
 sgx_tstd      = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk", features = ["untrusted_fs","net","backtrace"] }
 
 [dependencies.ed25519-dalek]
-version = "1.0.0-pre.1"
+git = "https://github.com/scs/ed25519-dalek.git"
+branch = "no_std_sgx"
 default-features = false
 features = ["u64_backend"]
+
 
