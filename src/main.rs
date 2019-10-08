@@ -5,7 +5,7 @@
 
 
 extern crate sgx_tstd as std;
-
+extern crate rstd;
 // DUT
 extern crate primitives;
 pub use primitives::ed25519::Pair;
@@ -29,13 +29,17 @@ pub extern fn main(_nargs: i32, _args: *const *const u8) -> i32 {
     // Exit with a return status of 0.
     0
 }
+/*
 #[panic_handler]
 fn panic(_panic: &PanicInfo<'_>) -> ! {
     loop {}
 }
+*/
 
+/*
 #[alloc_error_handler]
 fn foo(_: core::alloc::Layout) -> ! {
     extern "C" { fn abort() -> !; }
     unsafe { abort() }
 }
+*/
