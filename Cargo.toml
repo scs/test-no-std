@@ -4,26 +4,24 @@ version = "0.1.0"
 authors = ["Alain Brenzikofer <alain.brenzikofer@scs.ch>"]
 edition = "2018"
 
+[profile.dev]
+panic = "abort"
 
-[lib]
-name = "test_no_std"
-crate-type = ["staticlib"]
-
-[features]
-default = []
+[profile.release]
+panic = "abort"
 
 [target.'cfg(not(target_env = "sgx"))'.dependencies]
 sgx_tstd      = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk", features = ["untrusted_fs","net","backtrace"] }
 
+[dependencies]
+libc = { version="0.2", default-features=false }
 
-[dependencies.primitives]
-git = "https://github.com/scs/substrate-api-client"
-package = "substrate-primitives"
-branch = "no_std_rstd"
+[dependencies.primitives] 
+git = "https://github.com/scs/substrate"
+package = 'substrate-primitives'
+branch = "brenzi-no-std-crypto"
 default-features = false
+features = ["with_crypto"]
 
-[dependencies.ed25519-dalek]
-version = "1.0.0-pre.1"
-default-features = false
-features = ["u64_backend"]
-
+[patch.crates-io]
+ed25519-dalek = { git = "https://github.com/scs/ed25519-dalek.git", branch = "no_std_sgx"}
