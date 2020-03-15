@@ -11,7 +11,7 @@ panic = "abort"
 panic = "abort"
 
 [target.'cfg(not(target_env = "sgx"))'.dependencies]
-sgx_tstd      = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk", features = ["untrusted_fs","net","backtrace"] }
+sgx_tstd      = { tag = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk", features = ["untrusted_fs","net","backtrace"] }
 
 [dependencies]
 libc = { version="0.2", default-features=false }
@@ -21,7 +21,7 @@ git = "https://github.com/scs/substrate"
 branch = "brenzi-no-std-crypto"
 package = 'substrate-primitives'
 default-features = false
-features = ["with_crypto"]
+features = ["full_crypto"]
 
 [dependencies.sr-io]
 git = "https://github.com/scs/substrate"
@@ -39,4 +39,4 @@ features = ["no_global_allocator"]
 
 
 [patch.crates-io]
-ed25519-dalek = { git = "https://github.com/scs/ed25519-dalek.git", branch = "no_std_sgx"}
+ed25519-dalek = { git = "https://github.com/scs/ed25519-dalek.git", branch = "no_std_sgx_v0.9.1"}

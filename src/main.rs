@@ -8,7 +8,8 @@ extern crate sgx_tstd as std;
 extern crate rstd;
 // DUT
 extern crate primitives;
-pub use primitives::ed25519::Pair;
+
+//pub use primitives::ed25519::Pair;
 
 // The libc crate allows importing functions from C.
 extern crate libc;
