@@ -11,32 +11,16 @@ panic = "abort"
 panic = "abort"
 
 [target.'cfg(not(target_env = "sgx"))'.dependencies]
-sgx_tstd      = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk", features = ["untrusted_fs","net","backtrace"] }
+sgx_tstd      = { rev = "v1.1.0", git = "https://github.com/baidu/rust-sgx-sdk", features = ["untrusted_fs","net","backtrace"] }
 
 [dependencies]
 libc = { version="0.2", default-features=false }
 
-[dependencies.primitives] 
-git = "https://github.com/scs/substrate"
-branch = "brenzi-no-std-crypto"
-package = 'substrate-primitives'
+[dependencies.geo]
+git = "https://github.com/encointer/geo"
+branch = "no_std"
 default-features = false
-features = ["with_crypto"]
-
-[dependencies.sr-io]
-git = "https://github.com/scs/substrate"
-branch = "brenzi-no-std-crypto"
-package = 'sr-io'
-default-features=false
-features = ["no_oom", "no_panic_handler"]
-
-[dependencies.rstd]
-git = "https://github.com/scs/substrate"
-branch = "brenzi-no-std-crypto"
-package = "sr-std"
-default-features = false
-features = ["no_global_allocator"]
 
 
-[patch.crates-io]
-ed25519-dalek = { git = "https://github.com/scs/ed25519-dalek.git", branch = "no_std_sgx"}
+[patch."https://github.com/encointer/geo"]
+geo = { path = "../geo-fork" }
