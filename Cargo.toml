@@ -11,16 +11,22 @@ panic = "abort"
 panic = "abort"
 
 [target.'cfg(not(target_env = "sgx"))'.dependencies]
-sgx_tstd      = { rev = "v1.1.0", git = "https://github.com/baidu/rust-sgx-sdk", features = ["untrusted_fs","net","backtrace"] }
+sgx_tse       = { rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
+sgx_tstd      = { rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git", features = ["untrusted_fs","net","backtrace"]}
+sgx_rand      = { rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git"}
+sgx_trts      = { rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
+sgx_types     = { rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
+sgx_tseal     = { rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
+sgx_tcrypto   = { rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
+sgx_serialize = { rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
+sgx_tunittest = { rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
 
 [dependencies]
 libc = { version="0.2", default-features=false }
 
-[dependencies.geo]
-git = "https://github.com/encointer/geo"
-branch = "no_std"
+[dependencies.jsonrpc-core]
+path = "../jsonrpc/jsonrpc/core"
 default-features = false
 
-
-[patch."https://github.com/encointer/geo"]
-geo = { path = "../geo-fork" }
+#[patch."https://github.com/encointer/geo"]
+#geo = { path = "../geo-fork" }
